@@ -1,0 +1,25 @@
+@import "./variables.scss";
+
+$status-priority: (
+  "high": $red,
+  "medium": $yellow,
+  "low": $green,
+);
+
+@each $priority, $color in $status-priority {
+  .priority-#{$priority} {
+    background-color: $color;
+  }
+}
+
+@each $priority, $color in $status-priority {
+  .border-left-#{$priority} {
+    border-left: 0.5rem solid $color !important;
+  }
+}
+
+@each $priority, $color in $status-priority {
+  .border-right-#{$priority} {
+    border-right: 0.5rem solid $color !important;
+  }
+}

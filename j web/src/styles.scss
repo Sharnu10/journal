@@ -1,0 +1,8 @@
+/* You can add global styles to this file, and also import other style files */
+@import "./scss/variables.scss";
+@import "./app/shared/directive/tooltip/tooltip.directive.scss";
+
+// cursor
+.cursor {
+  cursor: pointer;
+}

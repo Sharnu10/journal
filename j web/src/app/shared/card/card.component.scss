@@ -1,0 +1,8 @@
+@import "../../../scss/utility.scss";
+
+.card-header {
+  height: 2rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

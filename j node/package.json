@@ -1,0 +1,27 @@
+{
+  "name": "node-journal",
+  "version": "1.0.0",
+  "description": "server for journal app",
+  "main": "index.ts",
+  "devDependencies": {
+    "nodemon": "^3.1.4",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4"
+  },
+  "scripts": {
+    "start": "node dist/index.js",
+    "dev": "npx nodemon index.ts",
+    "debug": "node --watch --inspect --require ts-node/register index.ts",
+    "dev:debug": "node --watch --inspect --require ts-node/register index.ts",
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sharnu",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "express-async-handler": "^1.2.0",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^5.1.7"
+  }
+}

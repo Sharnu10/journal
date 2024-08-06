@@ -1,0 +1,16 @@
+<form>
+  <div class="input-group">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="enter task..."
+      [(ngModel)]="taskData"
+      name="taskData"
+      aria-describedby="addon"
+    />
+    @if (taskData) {
+    <span class="input-group-text cursor" (click)="add()">+</span>
+    <span class="input-group-text cursor" (click)="clear()">x</span>
+    }
+  </div>
+</form>

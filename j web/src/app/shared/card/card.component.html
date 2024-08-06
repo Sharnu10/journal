@@ -1,0 +1,30 @@
+<div class="card m-1" [style.width]="width">
+  <div *ngIf="headerText" class="card-header" [ngClass]="getPriorityColor()">
+    {{ headerText }}
+  </div>
+
+  <div class="card-body">
+    <div class="d-flex justify-content-between">
+      <h5 class="card-title">{{ cardData.title }}</h5>
+
+      @if (!addNew) {
+      <button class="btn btn-primary" (click)="addNew = true">Add</button>
+      } @else {
+      <button class="btn btn-primary" (click)="addNew = false">
+        Remove add form
+      </button>
+      }
+    </div>
+
+    <hr />
+    <p class="description">{{ cardData.description }}</p>
+
+    <app-list-item [tasks]="tasksSignal()"></app-list-item>
+
+    @if (addNew) {
+    <app-form (taskDataEvent)="add($event)"></app-form>
+    }
+
+    <ng-content></ng-content>
+  </div>
+</div>

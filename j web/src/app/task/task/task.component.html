@@ -1,0 +1,5 @@
+<div class="tasks-container">
+  <div *ngFor="let card of cardInfo">
+    <app-card [cardData]="card" [headerText]="card.description"> </app-card>
+  </div>
+</div>

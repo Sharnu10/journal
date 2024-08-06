@@ -1,0 +1,42 @@
+<form [formGroup]="taskForm">
+  <div class="form-group mb-1">
+    <label for="task">Task</label>
+    <input type="text" id="task" class="form-control" formControlName="task" />
+  </div>
+  <div class="form-group mb-1">
+    <select
+      class="form-select"
+      aria-label="Default select example"
+      formControlName="priority"
+    >
+      <option value="high">High</option>
+      <option value="medium">medium</option>
+      <option value="low" selected>low</option>
+    </select>
+  </div>
+
+  <div class="form-group mb-1">
+    <select class="form-select" formControlName="category">
+      <option value="2 mins">2 mins</option>
+      <option value="timed">timed</option>
+    </select>
+  </div>
+
+  <div class="form-group mb-1">
+    <input
+      type="date"
+      name="createdDate"
+      id="createdDate"
+      formControlName="createdDate"
+      class="form-control"
+    />
+  </div>
+
+  <button
+    class="btn btn-primary"
+    (click)="submit()"
+    [disabled]="!taskForm.valid"
+  >
+    Submit
+  </button>
+</form>
