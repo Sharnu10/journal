@@ -12,8 +12,8 @@
 
 ### Tech used
 
-[![My Skills](https://skillicons.dev/icons?i=ts,html,scss,express,angular&theme=light)](https://skillicons.dev)
-
+[![My Skills](https://skillicons.dev/icons?i=ts,html,scss,angular,rxjs&theme=light)](https://skillicons.dev)
+-- skills: ts,html,scss,angular,rxjs
 ##### Implement
 
 -- general/reuse card.
@@ -31,6 +31,7 @@
 ### Tech used
 
 [![My Skills](https://skillicons.dev/icons?i=express,nodejs,js,sqlite,sqlite3&theme=light)](https://skillicons.dev)
+-- skills: express,nodejs,js,sqlite,sqlite3
 
 ##### Implement
 
