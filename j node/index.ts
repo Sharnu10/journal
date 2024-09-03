@@ -5,7 +5,7 @@ import { db } from './src/sqlite/config/db.config';
 import { cardRoutes } from './src/router/card-router';
 
 const app = express();
-const port = 3000;
+const port = 3003;
 
 db;
 
