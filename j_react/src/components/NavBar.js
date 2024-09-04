@@ -1,18 +1,19 @@
 import { NavLink } from "react-router-dom";
 
 const NavBar = () => {
+  const navList = [
+    { name: "Home", path: "/" },
+    { name: "About", path: "/about" },
+    { name: "Products", path: "/products" },
+    { name: "Tasks", path: "/tasks" },
+  ];
+
   return (
     <nav>
       <ul>
-        <li>
-          <NavLink to="/">Home</NavLink>
-        </li>
-        <li>
-          <NavLink to="/about">About</NavLink>
-        </li>
-        <li>
-          <NavLink to="/products">Products</NavLink>
-        </li>
+        {navList.map((item) => (
+          <li> {<NavLink to={item.path}>{item.name}</NavLink>} </li>
+        ))}
       </ul>
     </nav>
   );
