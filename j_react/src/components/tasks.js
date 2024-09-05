@@ -1,27 +1,25 @@
+import Card from "./card";
+
 export default function Tasks() {
-  const cardData = {
+  const data = {
+    id: 1,
     headerText: "2 min",
-    title: "short title",
-    description: "short description",
+    priority: "high",
+    title: "fast work",
+    category: ["2 mins"],
+    description: "short work!",
+  };
+
+  const style = {
+    width: "19rem",
   };
 
   return (
     <>
-      <h1>Tasks</h1>
-      <div className="card">
-        <div className="card-header"> {cardData.headerText}</div>
+      <h1>Tasks: </h1>
 
-        <div className="card-body">
-          <div className="d-flex justify-content-around">
-            <h5 className="card-title">{cardData.title}</h5>
-
-            <button className="btn btn-primary">Add</button>
-          </div>
-
-          <hr />
-
-          <p className="card-text">{cardData.description}</p>
-        </div>
+      <div>
+        <Card cardData={data} cardStyle={style} />
       </div>
     </>
   );

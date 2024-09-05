@@ -1,0 +1,17 @@
+@use "./variables" as vars;
+
+$status-priority: (
+  "high": vars.$red,
+  "medium": vars.$yellow,
+  "low": vars.$green,
+);
+
+@each $priority, $color in $status-priority {
+  .priority-#{$priority} {
+    background-color: $color;
+  }
+}
+
+.priority-high {
+  background-color: red;
+}

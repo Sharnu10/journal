@@ -12,7 +12,9 @@ const NavBar = () => {
     <nav>
       <ul>
         {navList.map((item) => (
-          <li> {<NavLink to={item.path}>{item.name}</NavLink>} </li>
+          <li key={item.name}>
+            {<NavLink to={item.path}>{item.name}</NavLink>}{" "}
+          </li>
         ))}
       </ul>
     </nav>
