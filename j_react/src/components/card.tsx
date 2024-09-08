@@ -1,4 +1,3 @@
-import "../styles/utility.scss";
 import { CardData, CardProps } from "../types/cardTypes";
 
 export default function Card({ cardData, cardStyle }: CardProps) {

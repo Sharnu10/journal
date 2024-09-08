@@ -32,7 +32,7 @@ export default function Tasks() {
   return (
     <>
       <h1>Tasks: 2 </h1>
-      <ul className="d-flex">
+      <ul className="d-flex ul-list ">
         {cardData?.length > 0 &&
           cardData.map((card, index) => (
             <li key={index}>

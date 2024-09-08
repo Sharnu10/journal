@@ -8,6 +8,7 @@ import Products from "./products";
 import { About } from "./about";
 import NavBar from "./components/NavBar";
 import Tasks from "./components/tasks";
+import "./styles/global.scss";
 
 function App() {
   return (
