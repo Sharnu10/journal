@@ -1,28 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { TaskApiService } from '../../shared/service/task.service';
 
 @Component({
   selector: 'app-task',
   templateUrl: './task.component.html',
   styleUrl: './task.component.scss',
 })
-export class TaskComponent {
+export class TaskComponent implements OnInit {
   addNew = false;
-  cardInfo = [
-    {
-      id: 1,
-      headerText: '2 min',
-      priority: 'high',
-      title: 'fast work',
-      category: ['2 mins'],
-      description: 'short work!',
-    },
-    {
-      id: 2,
-      headerText: 'timed 2 min',
-      priority: 'medium',
-      title: 'Timing',
-      category: ['timed'],
-      description: 'short work can be done in 2 min!',
-    },
-  ];
+  cardInfo: any;
+
+  constructor(private taskApiService: TaskApiService) {}
+
+  ngOnInit(): void {
+    this.taskApiService.getTasks().subscribe({
+      next: (response) => {
+        this.cardInfo = response.data;
+      },
+      error: (err) => {
+        alert('api call failed: ' + err.message);
+      },
+    });
+  }
 }

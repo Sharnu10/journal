@@ -2,8 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import moment from 'moment';
 
-import { ITask } from '../model/task.model';
-import { TooltipDirective } from '../directive/tooltip/tooltip.directive';
+import { ITask } from '../../model/task.model';
+import { TooltipDirective } from '../../directive/tooltip/tooltip.directive';
 
 @Component({
   selector: 'app-list-item',
