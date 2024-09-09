@@ -10,9 +10,20 @@ const port = 3003;
 
 db;
 
+const allowedOrigins = ["http://localhost:3000", "http://localhost:4200"];
+
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    // origin: "http://localhost:3000",
+
+    origin: function (origin, callback) {
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      } else {
+        return callback(new Error("Not allowed by CORS!"));
+      }
+    },
   })
 );
 
