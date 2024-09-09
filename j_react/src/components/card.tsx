@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { CardData, CardProps } from "../types/cardTypes";
 import AddForm from "./addForm";
+import { ITask } from "../types/taskType";
 
 export default function Card({ cardData, cardStyle }: CardProps) {
   const [showForm, setShowForm] = useState(false);
+  const [tasklist, setTask] = useState<ITask[]>([]);
 
   const getPriorityColor = (cardData: CardData): string => {
     return `card-header priority-${cardData.priority}`;
@@ -11,6 +13,10 @@ export default function Card({ cardData, cardStyle }: CardProps) {
 
   const toggleShowForm = () => {
     setShowForm(!showForm);
+  };
+
+  const handleSetTask = (newTask: ITask) => {
+    setTask((prevTask) => [...prevTask, newTask]);
   };
 
   return (
@@ -31,7 +37,17 @@ export default function Card({ cardData, cardStyle }: CardProps) {
         <p className="card-text">{cardData.description}</p>
       </div>
 
-      {showForm && <AddForm />}
+      {showForm && <AddForm setTask={handleSetTask} />}
+
+      {tasklist && (
+        <>
+          <ul className="ul-list">
+            {tasklist.map((task, index) => (
+              <li key={index}> {task.taskname} </li>
+            ))}
+          </ul>
+        </>
+      )}
     </div>
   );
 }

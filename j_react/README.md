@@ -10,7 +10,7 @@
 
 ### Tech used
 
-[![My Skills](https://skillicons.dev/icons?i=ts,html,scss,react,bootstrap,graphql &theme=light)](https://skillicons.dev)
+[![My Skills](https://skillicons.dev/icons?i=ts,html,scss,react,bootstrap,graphql&theme=light)](https://skillicons.dev)
 
 # Getting Started with Create React App
 

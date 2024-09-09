@@ -1,22 +1,20 @@
 import { Form, Button } from "react-bootstrap";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { ITask, SetTaskType } from "../types/taskType";
 
-interface AddFormValues {
-  taskname: string;
-  priority: string;
-  category: string;
-  date: string;
+interface AddFormProps {
+  setTask: SetTaskType;
 }
 
-export default function AddForm() {
+export default function AddForm({ setTask }: AddFormProps) {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<AddFormValues>();
+  } = useForm<ITask>();
 
-  const onSubmit: SubmitHandler<AddFormValues> = (data: AddFormValues) => {
-    console.log("Form data: ", data);
+  const onSubmit: SubmitHandler<ITask> = (data: ITask) => {
+    setTask(data);
   };
 
   return (
