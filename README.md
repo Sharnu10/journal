@@ -1,4 +1,4 @@
-# Development 
+# Development
 
 # Ui: journal
 
@@ -12,7 +12,7 @@
 
 ### Tech used
 
-[![My Skills](https://skillicons.dev/icons?i=ts,html,scss,express,angular&theme=light)](https://skillicons.dev)
+[![My Skills](https://skillicons.dev/icons?i=ts,html,scss,express,angular,bootstrap,react,graphql&theme=light)](https://skillicons.dev)
 
 ##### Implement
 

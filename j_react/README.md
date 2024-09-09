@@ -1,3 +1,17 @@
+# React journal
+
+## Still implement
+
+-- add form error to form select in ad form.
+
+## Description
+
+**Created app journal**
+
+### Tech used
+
+[![My Skills](https://skillicons.dev/icons?i=ts,html,scss,react,bootstrap,graphql &theme=light)](https://skillicons.dev)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
