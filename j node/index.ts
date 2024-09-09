@@ -31,7 +31,7 @@ app.get("/", (req, res) => {
   res.send("server is up");
 });
 
-app.use("/api", taskRouter);
+app.use("/api/task", taskRouter);
 app.use("/api/card", cardRoutes);
 
 app.listen(port, () => {
