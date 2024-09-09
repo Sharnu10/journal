@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { TaskRoutingModule } from './task-routing.module';
 import { TaskComponent } from './task/task.component';
-import { CardComponent } from '../shared/card/card.component';
+import { CardComponent } from '../shared/components/card/card.component';
 
 @NgModule({
   declarations: [TaskComponent],
