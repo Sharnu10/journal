@@ -5,6 +5,7 @@ import { ListItemComponent } from '../list-item/list-item.component';
 import { FormComponent } from '../../../task/form/form.component';
 import { ITask } from '../../model/task.model';
 import { InputTaskComponent } from '../input-task/input-task.component';
+import { TaskApiService } from '../../service/task.service';
 
 @Component({
   selector: 'app-card',
@@ -22,8 +23,11 @@ export class CardComponent {
   addNew = false;
   tasksSignal = signal<ITask[]>([]);
 
+  constructor(private taskApiService: TaskApiService) {}
+
   add(taskData: ITask) {
     this.tasksSignal.update((tasks) => [...tasks, taskData]);
+    this.taskApiService.addNewTask(taskData).subscribe();
     this.addNew = false;
   }
 
