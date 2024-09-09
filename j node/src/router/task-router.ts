@@ -13,14 +13,6 @@ const router = Router();
 const tableName = "tasks";
 
 router.get(
-  "/",
-  asynceHandler((req, res) => {
-    const text = "server 1 accesable 1";
-    res.json(text);
-  })
-);
-
-router.get(
   "/seed",
   asynceHandler(async (req: Request, res: Response) => {
     await createTable(
@@ -42,7 +34,7 @@ router.get(
 );
 
 router.get(
-  "/tasks",
+  "/",
   asynceHandler(async (req: Request, res: Response) => {
     try {
       const tasks = await getAllData(tableName);
@@ -57,7 +49,7 @@ router.get(
 );
 
 router.get(
-  "/tasks/:id",
+  "/:id",
   asynceHandler(async (req: Request, res: Response) => {
     try {
       const id = req.params.id;
