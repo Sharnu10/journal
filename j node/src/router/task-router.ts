@@ -1,61 +1,91 @@
-import { Request, Response, Router } from 'express';
-import asynceHandler from 'express-async-handler';
+import { Request, Response, Router } from "express";
+import asynceHandler from "express-async-handler";
 
-import { createTable } from '../sqlite/controller/create-table';
-import { seedTasksTable } from '../sqlite/controller/seedData';
-import { checkDataExistInTable, getAllData, getDataById } from '../sqlite/controller/select-table';
+import { createTable, runQuery } from "../sqlite/controller/create-table";
+import { seedTasksTable } from "../sqlite/controller/seedData";
+import {
+  checkDataExistInTable,
+  getAllData,
+  getDataById,
+} from "../sqlite/controller/select-table";
+import { insertQuery } from "../sqlite/controller/queries";
 
 const router = Router();
-const tableName = 'tasks';
+const tableName = "tasks";
+const columnNames = [
+  { name: "task", type: "TEXT", constraints: "NOT NULL" },
+  { name: "priority", type: "TEXT" },
+  { name: "category", type: "TEXT", constraints: `DEFAULT '2 min'` },
+];
 
 router.get(
-  '/',
-  asynceHandler((req, res) => {
-    const text = 'server 1 accesable 1';
-    res.json(text)
+  "/seed",
+  asynceHandler(async (req: Request, res: Response) => {
+    await createTable(tableName, columnNames, {
+      includeId: true,
+      includeCreatedDate: true,
+    });
+
+    const exist = await checkDataExistInTable(tableName);
+
+    if (exist) {
+      await seedTasksTable();
+    }
   })
 );
 
-router.get('/seed', asynceHandler(async (req: Request, res: Response) => {
+router.get(
+  "/",
+  asynceHandler(async (req: Request, res: Response) => {
+    try {
+      const tasks = await getAllData(tableName);
+      res.json({
+        message: "success",
+        data: tasks,
+      });
+    } catch (err: any) {
+      res.status(500).json({ error: err.message });
+    }
+  })
+);
 
-  await createTable(tableName, [
-    { name: 'task', type: 'TEXT', constraints: 'NOT NULL' },
-    { name: 'priority', type: 'TEXT' },
-    { name: 'category', type: 'TEXT', constraints: `DEFAULT '2 min'` },
-  ], { includeId: true, includeCreatedDate: true });
+router.get(
+  "/:id",
+  asynceHandler(async (req: Request, res: Response) => {
+    try {
+      const id = req.params.id;
+      const task = await getDataById(tableName, id);
+      res.json({
+        message: "success",
+        data: task,
+      });
+    } catch (err: any) {
+      res.status(500).json({ error: err.message });
+    }
+  })
+);
 
-  const exist = await checkDataExistInTable(tableName);
+router.post(
+  "/",
+  asynceHandler(async (req: Request, res: Response) => {
+    try {
+      const data = req.body;
 
-  if (exist) {
-    await seedTasksTable();
-  }
-}));
+      const query = insertQuery(
+        tableName,
+        columnNames.map((name) => name.name).join(", ") + `, createdDate`,
+        "?,?,?,?"
+      );
+      const values = Object.values(data);
+      const qureyRes = await runQuery(query, values, "Insert unsuccessfull.");
 
-router.get('/tasks', asynceHandler(async (req: Request, res: Response) => {
-  try {
-    const tasks = await getAllData(tableName);
-    res.json({
-      message: 'success',
-      data: tasks
-    })
-  }
-  catch (err: any) {
-    res.status(500).json({ error: err.message })
-  }
-}));
-
-router.get('/tasks/:id', asynceHandler(async (req: Request, res: Response) => {
-  try {
-    const id = req.params.id;
-    const task = await getDataById(tableName, id);
-    res.json({
-      message: 'success',
-      data: task
-    });
-  }
-  catch (err: any) {
-    res.status(500).json({ error: err.message })
-  }
-}));
+      if (qureyRes) {
+        res.status(200).json("Added new record.");
+      }
+    } catch (err: any) {
+      res.status(500).json({ error: err.message });
+    }
+  })
+);
 
 export { router as taskRouter };

@@ -10,17 +10,33 @@ const port = 3003;
 
 db;
 
+const allowedOrigins = ["http://localhost:3000", "http://localhost:4200"];
+
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    // origin: "http://localhost:3000",
+
+    origin: function (origin, callback) {
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      } else {
+        return callback(new Error("Not allowed by CORS!"));
+      }
+    },
   })
 );
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.use(express.json()); // for parsing application/json
+app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
 app.get("/", (req, res) => {
   res.send("server is up");
 });
 
-app.use("/api", taskRouter);
+app.use("/api/task", taskRouter);
 app.use("/api/card", cardRoutes);
 
 app.listen(port, () => {
