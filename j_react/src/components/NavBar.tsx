@@ -6,11 +6,12 @@ const NavBar = () => {
     { name: "About", path: "/about" },
     { name: "Products", path: "/products" },
     { name: "Tasks", path: "/tasks" },
+    { name: "Form", path: "/form" },
   ];
 
   return (
     <nav>
-      <ul className="ul-list">
+      <ul className="ul-list d-flex justify-content-around">
         {navList.map((item) => (
           <li key={item.name}>
             {<NavLink to={item.path}>{item.name}</NavLink>}{" "}
