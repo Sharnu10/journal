@@ -8,6 +8,8 @@ import Products from "./products";
 import { About } from "./about";
 import NavBar from "./components/NavBar";
 import Tasks from "./components/tasks";
+import AddForm from "./components/addForm";
+import FormikExample from "./components/formik";
 import "./styles/global.scss";
 
 function App() {
@@ -24,6 +26,7 @@ function App() {
             <Route path="/products" element={<Products />} />
             <Route path="/tasks" element={<Tasks />} />
             <Route path="/about" element={<About />} />
+            <Route path="/form" element={<FormikExample />} />
           </Route>
         </Routes>
       </div>

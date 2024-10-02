@@ -10,6 +10,7 @@
     "@types/react": "^18.3.5",
     "@types/react-dom": "^18.3.0",
     "bootstrap": "^5.3.3",
+    "formik": "^2.4.6",
     "react": "^18.3.1",
     "react-bootstrap": "^2.10.4",
     "react-dom": "^18.3.1",
@@ -18,7 +19,8 @@
     "react-scripts": "5.0.1",
     "sass": "^1.77.8",
     "typescript": "^5.5.4",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "yup": "^1.4.0"
   },
   "scripts": {
     "start": "react-scripts start",

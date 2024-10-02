@@ -1,0 +1,35 @@
+@use "./variables.scss" as var;
+
+.formik-form {
+  border: 1px solid black;
+  margin: 0rem 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 0.5rem;
+  background-color: var.$bg-white;
+  box-shadow: 4px 5px 5px rgba(0, 0, 0, 0.3);
+
+  h3 {
+    color: var.$green;
+  }
+
+  .form {
+    width: 42rem;
+    div {
+      display: flex;
+      flex-flow: column wrap;
+      align-items: flex-start;
+      margin: 0.25rem 0;
+
+      &:last-of-type {
+        display: block;
+      }
+
+      input {
+        width: 100%;
+      }
+    }
+  }
+}
