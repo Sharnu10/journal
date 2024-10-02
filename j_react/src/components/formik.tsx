@@ -1,20 +1,10 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
-
-import "../styles/formik.scss";
 import { Button } from "react-bootstrap";
 
-interface IFormikExample {
-  firstName: string;
-  lastName: string;
-  email: string;
-  contact: number;
-  gender: string;
-  choice: string;
-  subjects: string[];
-  url: string;
-  about: string;
-}
+import "../styles/formik.scss";
+import { IFormikExample } from "../types/form";
+import { postForm } from "../api/fomikForm-api";
 
 const initialValues: IFormikExample = {
   firstName: "",
@@ -43,6 +33,8 @@ const validationSchema = Yup.object({
 export default function FormikExample() {
   const onSubmit = (values: IFormikExample, { resetForm }: any) => {
     console.log(values);
+
+    postForm(values);
 
     resetForm();
   };
