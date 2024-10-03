@@ -1,14 +1,14 @@
 import { Request, Response, Router } from "express";
 import asynceHandler from "express-async-handler";
 
-import { createTable, runQuery } from "../sqlite/controller/create-table";
+import { createTable } from "../sqlite/controller/create-table";
 import { seedTasksTable } from "../sqlite/controller/seedData";
 import {
   checkDataExistInTable,
   getAllData,
   getDataById,
 } from "../sqlite/controller/select-table";
-import { insertQuery } from "../sqlite/controller/queries";
+import { insertQuery, runQueryWithValues } from "../sqlite/controller/queries";
 
 const router = Router();
 const tableName = "tasks";
@@ -77,7 +77,11 @@ router.post(
         "?,?,?,?"
       );
       const values = Object.values(data);
-      const qureyRes = await runQuery(query, values, "Insert unsuccessfull.");
+      const qureyRes = await runQueryWithValues(
+        query,
+        values,
+        "Insert unsuccessfull."
+      );
 
       if (qureyRes) {
         res.status(200).json("Added new record.");
