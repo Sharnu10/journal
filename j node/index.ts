@@ -3,7 +3,8 @@ import cors from "cors";
 
 import { taskRouter } from "./src/router/task-router";
 import { db } from "./src/sqlite/config/db.config";
-import { cardRoutes } from "./src/router/card-router";
+import { cardRouter } from "./src/router/card-router";
+import { formikRouter } from "./src/router/formik-router";
 
 const app = express();
 const port = 3003;
@@ -26,8 +27,6 @@ app.use(
     },
   })
 );
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 
 app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
@@ -37,7 +36,8 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/task", taskRouter);
-app.use("/api/card", cardRoutes);
+app.use("/api/card", cardRouter);
+app.use("/api/formik", formikRouter);
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);

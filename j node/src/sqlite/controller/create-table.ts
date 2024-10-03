@@ -1,6 +1,5 @@
-import { db } from "../config/db.config";
 import { ColumnDefination, TableOptions } from "../model/table";
-import { createQuery } from "./queries";
+import { createQuery, runQuery } from "./queries";
 
 export const createTable = (
   tableName: string,
@@ -22,32 +21,7 @@ export const createTable = (
 
   const query = createQuery(tableName, columnDefinations);
 
-  runQuery(query, null, "Table created successfully.");
-};
-
-/**
- * function to run create table and insert new record.
- * @param query
- * @param insertValues
- * @param elseMessage
- * @returns
- */
-export const runQuery = (
-  query: string,
-  insertValues?: any | null,
-  elseMessage?: string
-): Promise<boolean> => {
-  return new Promise((resolve, reject) => {
-    db.run(query, insertValues, (err) => {
-      if (err) {
-        console.log("runQuery fun:- ", err.message);
-        reject(false);
-      } else {
-        console.log("elseMessage: ", elseMessage);
-        resolve(true);
-      }
-    });
-  });
+  runQuery(query, "Table created successfully.");
 };
 
 export const getColumnDefination = (columns: ColumnDefination[]) => {
