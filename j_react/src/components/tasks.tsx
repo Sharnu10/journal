@@ -4,7 +4,7 @@ import { CardData, CardStyle } from "../types/cardTypes";
 import { fetchCardData } from "../api/cardApi";
 
 export default function Tasks() {
-  const [cardData, setData] = useState<CardData[]>([]);
+  const [cardData, setCardData] = useState<CardData[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<Error | null>(null);
 
@@ -17,7 +17,7 @@ export default function Tasks() {
 
     fetchCardData()
       .then((responseData) => {
-        setData(responseData.data);
+        setCardData(responseData.data);
         setLoading(false);
       })
       .catch((error) => {

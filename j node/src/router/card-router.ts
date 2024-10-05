@@ -43,9 +43,12 @@ router.get(
     try {
       const cards: ICard[] = await getAllData(tableName);
 
-      if (cards) {
-        cards.forEach((row: any) => (row.category = JSON.parse(row.category)));
-      }
+      // if (cards) {
+      //   cards.forEach(
+      //     (row: any) => (row.category = JSON.stringify(row.category))
+      //   );
+      // }
+
       res.json({
         message: "success",
         data: cards,

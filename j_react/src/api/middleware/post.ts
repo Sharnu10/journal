@@ -1,4 +1,4 @@
-import { IFormikExample } from "../types/form";
+import { IFormikExample } from "../../types/form";
 
 export const post = async (
   apiUrl: string,
