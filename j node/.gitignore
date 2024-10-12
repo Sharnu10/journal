@@ -3,3 +3,6 @@
 /node_modules
 
 journal-db.db
+
+logs/
+*.log
