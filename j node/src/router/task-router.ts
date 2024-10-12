@@ -1,5 +1,5 @@
 import { Request, Response, Router } from "express";
-import asynceHandler from "express-async-handler";
+import asyncHandler from "express-async-handler";
 
 import { createTable } from "../sqlite/controller/create-table";
 import { seedTasksTable } from "../sqlite/controller/seedData";
@@ -9,6 +9,7 @@ import {
   getDataById,
 } from "../sqlite/controller/select-table";
 import { insertQuery, runQueryWithValues } from "../sqlite/controller/queries";
+import Api404Error from "../middleware/error/Api404Error";
 
 const router = Router();
 const tableName = "tasks";
@@ -20,7 +21,7 @@ const columnNames = [
 
 router.get(
   "/seed",
-  asynceHandler(async (req: Request, res: Response) => {
+  asyncHandler(async (req: Request, res: Response) => {
     await createTable(tableName, columnNames, {
       includeId: true,
       includeCreatedDate: true,
@@ -34,40 +35,69 @@ router.get(
   })
 );
 
+// Route to get all task with asyncHandler.
+// while useing this, comment other route path with try-catch
+// router.get(
+//   "/",
+//   asyncHandler(async (req: Request, res: Response) => {
+//     const tasks = await getAllData(tableName);
+//     res.json({
+//       message: "success",
+//       data: tasks,
+//     });
+//   })
+// );
+
+// Route to get all task with try-catch.
+//  while using this, comment other route path with asyncHandler.
+router.get("/", async (req: Request, res: Response, next) => {
+  try {
+    const tasks = await getAllData(tableName);
+    res.json({
+      message: "success",
+      data: tasks,
+    });
+  } catch (err: any) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// Route to get a task by its ID with asyncHandler of express-async-handler
 router.get(
-  "/",
-  asynceHandler(async (req: Request, res: Response) => {
-    try {
-      const tasks = await getAllData(tableName);
-      res.json({
-        message: "success",
-        data: tasks,
-      });
-    } catch (err: any) {
-      res.status(500).json({ error: err.message });
-    }
+  "/:id",
+  asyncHandler(async (req: Request, res: Response) => {
+    const id = req.params.id;
+    const task = await getDataById(tableName, id);
+
+    res.status(200).json({
+      message: "success",
+      data: task,
+    });
   })
 );
 
+// Route to get a task by its ID
 router.get(
   "/:id",
-  asynceHandler(async (req: Request, res: Response) => {
+  asyncHandler(async (req: Request, res: Response, next) => {
     try {
       const id = req.params.id;
       const task = await getDataById(tableName, id);
+
       res.json({
         message: "success",
         data: task,
       });
     } catch (err: any) {
       res.status(500).json({ error: err.message });
+      next(err);
     }
   })
 );
 
 router.post(
   "/",
-  asynceHandler(async (req: Request, res: Response) => {
+  asyncHandler(async (req: Request, res: Response) => {
     try {
       const data = req.body;
 
