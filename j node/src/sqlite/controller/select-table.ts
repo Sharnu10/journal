@@ -1,6 +1,7 @@
 import { db } from "../config/db.config";
 import { ITask } from "../../model/node-task.module";
 import { selectConstraintQuery, selectQuery } from "./queries";
+import logger from "../../utils/logger";
 
 interface Row {
   count: number;
@@ -49,15 +50,15 @@ export const checkDataExistInTable = (tableName: string): Promise<boolean> => {
   return new Promise((resolve, reject) => {
     db.get<Row>(query, [], (err, rows) => {
       if (err) {
-        console.error(err.message);
+        logger.error(err.message);
         return reject(err);
       }
 
       if (rows && rows.count > 0) {
-        console.log("Data exists in the table");
+        logger.info("Data exists in the table");
         resolve(false);
       } else {
-        console.log("Data does not exist in the table");
+        logger.info("Data does not exist in the table");
         resolve(true);
       }
     });

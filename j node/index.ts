@@ -10,6 +10,7 @@ import {
   logError,
   returnError,
 } from "./src/middleware/errorHandler";
+import logger from "./src/utils/logger";
 
 const app = express();
 const port = 3003;
@@ -38,6 +39,7 @@ app.use(express.urlencoded({ extended: true })); // for parsing application/x-ww
 
 app.get("/", (req, res) => {
   res.send("server is up");
+  logger.info("Server is up and running"); // Log server status
 });
 
 app.use("/api/task", taskRouter);
@@ -50,17 +52,17 @@ app.use(returnError);
 
 // Global error handling for unhandled promise rejections and uncaught exceptions
 process.on("unhandledRejection", (reason, promise) => {
-  console.error("Unhandled Rejection at:", promise, "reason:", reason);
+  logger.error("Unhandled Rejection at:", promise, "reason:", reason);
   // Optional: send entire application down. Recommended to restart the server in production.
   process.exit(1);
 });
 
 process.on("uncaughtException", (error) => {
-  console.error("Uncaught Exception thrown:", error);
+  logger.error("Uncaught Exception thrown:", error);
   // Optional: send entire application down. Recommended to restart the server in production.
   process.exit(1);
 });
 
 app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
+  logger.info(`Server running at http://localhost:${port}`);
 });

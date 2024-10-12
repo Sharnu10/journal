@@ -1,3 +1,4 @@
+import logger from "../../utils/logger";
 import { db } from "../config/db.config";
 
 export const insertQuery = (
@@ -30,10 +31,10 @@ export const runQueryWithValues = (
   return new Promise((resolve, reject) => {
     db.run(query, insertValues, (err) => {
       if (err) {
-        console.log("runQueryWithValues fun:- ", err.message);
+        logger.info("runQueryWithValues fun:- ", err.message);
         reject(false);
       } else {
-        console.log("message: ", message);
+        logger.info("message: ", message);
         resolve(true);
       }
     });
@@ -50,10 +51,10 @@ export const runQuery = (query: string, message?: string): Promise<boolean> => {
   return new Promise((resolve, reject) => {
     db.run(query, (err) => {
       if (err) {
-        console.log("runQuery fun: ", err.message);
+        logger.info("runQuery fun: ", err.message);
         reject(false);
       } else {
-        console.log("message: ", message);
+        logger.info("message: ", message);
         resolve(true);
       }
     });

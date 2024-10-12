@@ -1,9 +1,10 @@
 import { NextFunction, Request, Response } from "express";
 import BaseError from "./error/baseError";
+import logger from "../utils/logger";
 
 // Log the error
 function logError(err: Error, req: Request, res: Response, next: NextFunction) {
-  console.error(err);
+  logger.error(err);
   next(err); // Pass the error to the next middleware
 }
 
@@ -21,7 +22,7 @@ function errorHandler(
   res: Response,
   next: NextFunction
 ) {
-  console.log("Centerlized Error Handling: ", err.message);
+  logger.info(`Centerlized Error Handling:  ${err.message}`);
 
   res.status(500).json({
     message: "Internal Server Error",

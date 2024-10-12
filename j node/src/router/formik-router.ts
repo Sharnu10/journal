@@ -3,6 +3,7 @@ import asynceHandler from "express-async-handler";
 import { createTable } from "../sqlite/controller/create-table";
 import { insertQuery, runQueryWithValues } from "../sqlite/controller/queries";
 import { getAllData } from "../sqlite/controller/select-table";
+import logger from "../utils/logger";
 
 const router = Router();
 const tableName = "formikForm";
@@ -24,7 +25,7 @@ router.get(
     try {
       createTable(tableName, columnNames, { includeId: true });
     } catch (err) {
-      console.error(err);
+      logger.error(err);
     }
   })
 );
