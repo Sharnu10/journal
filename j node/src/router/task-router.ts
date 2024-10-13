@@ -62,7 +62,8 @@ router.get("/", async (req: Request, res: Response, next) => {
   }
 });
 
-// Route to get a task by its ID with asyncHandler of express-async-handler
+// Route to get a task by its ID with asyncHandler
+// while useing this, comment other route path with try-catch
 router.get(
   "/:id",
   asyncHandler(async (req: Request, res: Response) => {
@@ -76,24 +77,26 @@ router.get(
   })
 );
 
-// Route to get a task by its ID
-router.get(
-  "/:id",
-  asyncHandler(async (req: Request, res: Response, next) => {
-    try {
-      const id = req.params.id;
-      const task = await getDataById(tableName, id);
+// Route to get a task by its ID with try-catch.
+//  while using this, comment other route path with asyncHandler.
+router.get("/:id", async (req: Request, res: Response, next) => {
+  try {
+    const id = req.params.id;
+    const task = await getDataById(tableName, id);
 
-      res.json({
-        message: "success",
-        data: task,
-      });
-    } catch (err: any) {
-      res.status(500).json({ error: err.message });
-      next(err);
+    if (!task) {
+      throw new Api404Error("No user Found");
     }
-  })
-);
+
+    res.json({
+      message: "success",
+      data: task,
+    });
+  } catch (err: any) {
+    res.status(500).json({ error: err.message });
+    next(err);
+  }
+});
 
 router.post(
   "/",
