@@ -4,25 +4,43 @@ import { getApi } from "../api/middleware/get";
 import Button from "../common/Button";
 import "../styles/joke.scss";
 
+interface IJoke {
+  joke: string;
+  error?: boolean;
+}
+
 const Joke = () => {
-  const [joke, setJoke] = useState<any>({});
+  const [joke, setJoke] = useState<IJoke | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
   const apiUrl = "https://sv443.net/jokeapi/v2/joke/Programming?type=single";
 
-  function getJoke() {
-    getApi(apiUrl)
-      .then((res) => {
-        setJoke(res);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
+  const getJoke = async () => {
+    setLoading(true);
+    setError(null);
+
+    try {
+      const res = await getApi(apiUrl);
+      setJoke(res);
+    } catch (error) {
+      setError("Failed to fetch the joke!");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="joke">
       <h3>Line generator component</h3>
       <Button callApi={getJoke} />
-      <div>{joke?.joke}</div>
+
+      {loading ? (
+        <p>Loading...</p>
+      ) : error ? (
+        <div> {error}</div>
+      ) : (
+        <div>{joke?.joke}</div>
+      )}
     </div>
   );
 };
