@@ -8,6 +8,7 @@ const NavBar = () => {
     { name: "Tasks", path: "/tasks" },
     { name: "Form", path: "/form" },
     { name: "TableFormik", path: "/table-formik" },
+    { name: "Joke", path: "/joke" },
   ];
 
   return (

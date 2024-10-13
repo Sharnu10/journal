@@ -90,12 +90,17 @@ export default function FormikExample() {
                 <label htmlFor="gender">Gender</label>
                 <div role="group" aria-labelledby="gender">
                   <label htmlFor="male" className="pe-2">
-                    <Field type="radio" name="gender" value="male" />
+                    <Field type="radio" name="gender" value="male" id="male" />
                     Male
                   </label>
 
                   <label htmlFor="female">
-                    <Field type="radio" name="gender" value="female" />
+                    <Field
+                      type="radio"
+                      name="gender"
+                      value="female"
+                      id="female"
+                    />
                     Female
                   </label>
 
@@ -112,17 +117,32 @@ export default function FormikExample() {
                 <label htmlFor="subjects"> Subjects</label>
                 <div role="group" aria-labelledby="subjects">
                   <label htmlFor="englist" className="pe-2">
-                    <Field type="checkbox" name="subjects" value="English" />
+                    <Field
+                      type="checkbox"
+                      name="subjects"
+                      value="English"
+                      id="englist"
+                    />
                     English
                   </label>
 
                   <label htmlFor="maths" className="pe-2">
-                    <Field type="checkbox" name="subjects" value="Maths" />
+                    <Field
+                      type="checkbox"
+                      name="subjects"
+                      value="Maths"
+                      id="maths"
+                    />
                     Maths
                   </label>
 
                   <label htmlFor="physics" className="pe-2">
-                    <Field type="checkbox" name="subjects" value="Physics" />
+                    <Field
+                      type="checkbox"
+                      name="subjects"
+                      value="Physics"
+                      id="physics"
+                    />
                     Physics
                   </label>
                 </div>
@@ -130,20 +150,25 @@ export default function FormikExample() {
               </div>
 
               <div>
-                <label htmlFor="resume">Resume</label>
+                <label>Resume</label>
                 {/* <Field type="file" name="resume" />
             <ErrorMessage name="resume" component="div" className="error" /> */}
               </div>
 
               <div>
                 <label htmlFor="url">Enter Url</label>
-                <Field type="text" name="url" />
-                <ErrorMessage name="url" component="div" className="url" />
+                <Field type="text" name="url" id="url" />
+                <ErrorMessage
+                  name="url"
+                  id="url"
+                  component="div"
+                  className="url"
+                />
               </div>
 
               <div>
                 <label htmlFor="choice">Select your choice</label>
-                <Field as="select" name="choice">
+                <Field as="select" name="choice" id="choice">
                   <option value="" label="Select your ans" />
                   <option value="answer1" label="answer1" />
                   <option value="answer2" label="answer2" />
@@ -153,7 +178,7 @@ export default function FormikExample() {
 
               <div>
                 <label htmlFor="about">About</label>
-                <Field type="textarea" name="about" />
+                <Field type="textarea" name="about" id="about" />
                 <ErrorMessage name="about" component="div" className="error" />
               </div>
 

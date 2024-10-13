@@ -13,6 +13,7 @@ import Tasks from "./components/tasks";
 import AddForm from "./components/addForm";
 import FormikExample from "./components/formik";
 import TableFormik from "./components/table-formik";
+import Joke from "./components/joke";
 import "./styles/global.scss";
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/form" element={<FormikExample />} />
             <Route path="/table-formik" element={<TableFormik />} />
+            <Route path="/joke" element={<Joke />} />
           </Route>
         </Routes>
       </div>
