@@ -14,6 +14,7 @@ import AddForm from "./components/addForm";
 import FormikExample from "./components/formik";
 import TableFormik from "./components/table-formik";
 import Joke from "./components/joke";
+import ValidatePassword from "./components/validator";
 import "./styles/global.scss";
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
             <Route path="/form" element={<FormikExample />} />
             <Route path="/table-formik" element={<TableFormik />} />
             <Route path="/joke" element={<Joke />} />
+            <Route path="/validatePassword" element={<ValidatePassword />} />
           </Route>
         </Routes>
       </div>

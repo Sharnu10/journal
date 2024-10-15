@@ -32,7 +32,7 @@ const Joke = () => {
   return (
     <div className="joke">
       <h3>Line generator component</h3>
-      <Button callApi={getJoke} />
+      <Button onClick={getJoke} />
 
       {loading ? (
         <p>Loading...</p>
