@@ -15,7 +15,9 @@ import FormikExample from "./components/formik";
 import TableFormik from "./components/table-formik";
 import Joke from "./components/joke";
 import ValidatePassword from "./components/validator";
+import RollingDice from "./components/rolling-dice";
 import "./styles/global.scss";
+import "./common/utils/fontawesome";
 
 function App() {
   return (
@@ -24,7 +26,7 @@ function App() {
         <NavBar />
       </div>
 
-      <div className="App">
+      <div className="ADicepp">
         <Routes>
           <Route>
             <Route path="/" element={<Home />} />
@@ -35,6 +37,7 @@ function App() {
             <Route path="/table-formik" element={<TableFormik />} />
             <Route path="/joke" element={<Joke />} />
             <Route path="/validatePassword" element={<ValidatePassword />} />
+            <Route path="/diceRoll" element={<RollingDice />} />
           </Route>
         </Routes>
       </div>

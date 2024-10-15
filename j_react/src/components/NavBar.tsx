@@ -10,6 +10,7 @@ const NavBar = () => {
     { name: "TableFormik", path: "/table-formik" },
     { name: "Joke", path: "/joke" },
     { name: "ValidatePassword", path: "/validatePassword" },
+    { name: "Dice", path: "/diceRoll" },
   ];
 
   return (

@@ -1,0 +1,81 @@
+@use "./utility.scss" as *;
+
+.dice {
+  font-size: 10em;
+  padding: 0.25em;
+  color: slateblue;
+}
+
+.dice-shaking {
+  animation-name: wobble;
+  animation-duration: 2s;
+}
+
+// @keyframes wobble {
+//   from {
+//     @include translate-3d(0, 0, 0);
+//   }
+
+//   15% {
+//     @include translate-3d(-25%, 0, 0);
+//     @include rotate3d(0, 0, 1, -5deg);
+//   }
+
+//   30% {
+//     @include translate-3d();
+//     @include rotate3d(0, 0, 1, 3deg);
+//   }
+
+//   45% {
+//     @include translate-3d(-15%, 0, 0);
+//     @include rotate3d(0, 0, 1, -3deg);
+//   }
+
+//   60% {
+//     @include translate-3d(10%, 0, 0);
+//     @include rotate3d(0, 0, 1, 2deg);
+//   }
+
+//   100% {
+//     @include translate-3d(0, 0, 0);
+//   }
+// }
+
+/* Setting Animation effect to the 
+     dice using css keyframe */
+@keyframes wobble {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  15% {
+    transform: translate3d(-25%, 0, 0) rotate3d(0, 0, 1, -5deg);
+  }
+
+  30% {
+    transform: translate3d(20%, 0, 0) rotate3d(0, 0, 1, 3deg);
+  }
+
+  45% {
+    transform: translate3d(-15%, 0, 0) rotate3d(0, 0, 1, -3deg);
+  }
+
+  60% {
+    transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 2deg);
+  }
+
+  75% {
+    transform: translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -1deg);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.dice-container {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: center;
+}

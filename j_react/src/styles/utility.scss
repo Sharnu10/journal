@@ -15,3 +15,14 @@ $status-priority: (
 .priority-high {
   background-color: red;
 }
+
+// Mixin for translate3d
+@mixin translate-3d($x, $y, $z) {
+  transfrom: translate3d($x, $y, $z);
+  transition: transfrom 0.3s ease-in-out;
+}
+
+// Mixin for rotate3d
+@mixin rotate3d($x: 0, $y: 0, $z: 1, $angle: 0deg) {
+  transform: rotate3d($x, $y, $z, $angle);
+}
