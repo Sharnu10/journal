@@ -16,6 +16,8 @@ import TableFormik from "./components/table-formik";
 import Joke from "./components/joke";
 import ValidatePassword from "./components/validator";
 import RollingDice from "./components/rolling-dice";
+import Todo from "./components/todo";
+
 import "./styles/global.scss";
 import "./common/utils/fontawesome";
 
@@ -38,6 +40,7 @@ function App() {
             <Route path="/joke" element={<Joke />} />
             <Route path="/validatePassword" element={<ValidatePassword />} />
             <Route path="/diceRoll" element={<RollingDice />} />
+            <Route path="/todo" element={<Todo />} />
           </Route>
         </Routes>
       </div>

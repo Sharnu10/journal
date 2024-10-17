@@ -11,6 +11,7 @@ const NavBar = () => {
     { name: "Joke", path: "/joke" },
     { name: "ValidatePassword", path: "/validatePassword" },
     { name: "Dice", path: "/diceRoll" },
+    { name: "Todo", path: "/todo" },
   ];
 
   return (
