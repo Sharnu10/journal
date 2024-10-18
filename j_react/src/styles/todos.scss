@@ -1,0 +1,30 @@
+.container {
+  border: 1px solid black;
+  border-radius: 0.5rem;
+
+  .todo-list-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    font-weight: bolder;
+  }
+
+  .add-btn {
+    width: fit-content;
+  }
+
+  .todo-lists {
+    list-style-type: none;
+    margin-top: 1rem;
+
+    .todo-item {
+      border: 1px solid black;
+      height: 3rem;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      align-content: center;
+    }
+  }
+}

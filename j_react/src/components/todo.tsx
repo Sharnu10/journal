@@ -1,4 +1,7 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { Button, Container, Form, Row } from "react-bootstrap";
+
+import "../styles/todos.scss";
 
 interface ITodo {
   taskDes: string;
@@ -21,33 +24,65 @@ const Todo = () => {
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) =>
     setNewTodoValue(event.target.value);
 
+  const deleteTodo = (todo: ITodo) => {
+    let newTodo = todos.filter((item) => {
+      return item.taskDes !== todo.taskDes;
+    });
+    setTodo(newTodo);
+  };
+
+  const editTodo = () => {};
+
   return (
-    <>
-      <h2>Todo List</h2>
+    <Container className="container">
+      <Row className="todo-list-header">TODO LIST</Row>
 
-      <div>
-        <div>
-          <input
-            type="text"
-            placeholder="add item..."
-            name="newTodoValue"
-            value={newTodoValue}
-            onChange={handleInputChange}
-          />
-        </div>
+      <hr />
 
-        <button className="btn btn-warning" onClick={addTodo}>
+      <Row>
+        <Form>
+          <Form.Group className="mb-3">
+            <Form.Control
+              type="text"
+              placeholder="add item..."
+              name="newTodoValue"
+              value={newTodoValue}
+              onChange={handleInputChange}
+            />
+          </Form.Group>
+        </Form>
+      </Row>
+
+      <Row>
+        <Button className="add-btn" variant="dark" onClick={addTodo}>
           Add
-        </button>
-      </div>
+        </Button>
+      </Row>
 
-      <br />
+      <Row>
+        <ul className="todo-lists">
+          {todos &&
+            todos.map((todo, index) => (
+              <li key={todo.taskDes} className="todo-item">
+                <span>{todo.taskDes}</span>
+                <span>
+                  <Button variant="light" onClick={() => deleteTodo(todo)}>
+                    Delete
+                  </Button>
 
-      <ul>
-        {todos &&
-          todos.map((todo) => <li key={todo.taskDes}>{todo.taskDes}</li>)}
-      </ul>
-    </>
+                  {/* <Button
+                    variant="light"
+                    className="ms-4"
+                    onClick={() => editTodo()}
+                  >
+                    Edit
+                  </Button> */}
+                </span>
+              </li>
+            ))}
+        </ul>
+      </Row>
+    </Container>
   );
 };
 
