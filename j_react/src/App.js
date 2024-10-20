@@ -10,13 +10,13 @@ import Products from "./products";
 import { About } from "./about";
 import NavBar from "./components/NavBar";
 import Tasks from "./components/tasks";
-import AddForm from "./components/addForm";
 import FormikExample from "./components/formik";
 import TableFormik from "./components/table-formik";
 import Joke from "./components/joke";
 import ValidatePassword from "./components/validator";
 import RollingDice from "./components/rolling-dice";
 import Todo from "./components/todo";
+import QuestionLayout from "./components/question/question-layout";
 
 import "./styles/global.scss";
 import "./common/utils/fontawesome";
@@ -41,6 +41,7 @@ function App() {
             <Route path="/validatePassword" element={<ValidatePassword />} />
             <Route path="/diceRoll" element={<RollingDice />} />
             <Route path="/todo" element={<Todo />} />
+            <Route path="/quiz" element={<QuestionLayout />} />
           </Route>
         </Routes>
       </div>
