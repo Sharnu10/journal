@@ -12,6 +12,11 @@ export const routes: Routes = [
         loadChildren: () =>
           import('./task/task.module').then((m) => m.TaskModule),
       },
+      {
+        path: 'simple',
+        loadChildren: () =>
+          import('./simpleApp/simple.module').then((m) => m.SimpleModule),
+      },
     ],
   },
 ];

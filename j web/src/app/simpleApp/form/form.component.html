@@ -1,0 +1,57 @@
+<div class="container">
+  <h3>Form:</h3>
+
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <div class="from-group">
+      <label for="form-label">First Name:</label>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="enter firstName..."
+        formControlName="firstName"
+      />
+      <div></div>
+    </div>
+
+    <div class="from-group mt-1">
+      <label for="form-label">Last Name:</label>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="enter lastName.."
+        formControlName="lastName"
+        name="lastName"
+      />
+    </div>
+
+    <div class="form-group mt-1">
+      <label for="form-label">Email:</label>
+      <input type="text" class="form-control" formControlName="email" />
+    </div>
+
+    <div class="form-group mt-1">
+      <label for="form-label">Contact:</label>
+      <input
+        type="number"
+        name="contact"
+        class="form-control"
+        formControlName="contact"
+      />
+    </div>
+
+    <div class="form-group mt-1">
+      <label for="form-label">Gender:</label>
+      <label>
+        <input type="radio" formControlName="gender" value="male" /> Male
+      </label>
+      <label>
+        <input type="radio" formControlName="gender" value="female" /> Female
+      </label>
+      <label>
+        <input type="radio" formControlName="gender" value="other" /> Other
+      </label>
+    </div>
+
+    <button class="btn btn-primary mt-2" type="submit">Submit</button>
+  </form>
+</div>
