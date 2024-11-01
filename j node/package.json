@@ -4,6 +4,8 @@
   "description": "server for journal app",
   "main": "index.ts",
   "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
     "nodemon": "^3.1.4",
     "ts-node": "^10.9.2",
     "typescript": "^5.5.4"
@@ -19,6 +21,9 @@
   "author": "Sharnu",
   "license": "ISC",
   "dependencies": {
+    "aws-sdk": "^2.1691.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "express-async-handler": "^1.2.0",
     "sqlite": "^5.1.1",

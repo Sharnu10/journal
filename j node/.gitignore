@@ -6,3 +6,6 @@ journal-db.db
 
 logs/
 *.log
+
+# remove env 
+.env

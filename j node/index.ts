@@ -1,19 +1,18 @@
-import express from "express";
 import cors from "cors";
+import dotenv from 'dotenv';
+import express from "express";
 
-import { taskRouter } from "./src/router/task-router";
-import { db } from "./src/sqlite/config/db.config";
 import { cardRouter } from "./src/router/card-router";
+import { db } from "./src/sqlite/config/db.config";
+import { errorHandler,  logError,  returnError,} from "./src/middleware/errorHandler";
 import { formikRouter } from "./src/router/formik-router";
-import {
-  errorHandler,
-  logError,
-  returnError,
-} from "./src/middleware/errorHandler";
+import { taskRouter } from "./src/router/task-router";
+import { s3, dynamoDb, lambda } from './aws-services';
 import logger from "./src/utils/logger";
 
 const app = express();
 const port = 3003;
+dotenv.config();
 
 db;
 
@@ -61,6 +60,11 @@ process.on("uncaughtException", (error) => {
   logger.error("Uncaught Exception thrown:", error);
   // Optional: send entire application down. Recommended to restart the server in production.
   process.exit(1);
+});
+
+
+s3.listBuckets((err, data) => {
+  if(err) { logger.error("error: ", err);} else { logger.info("Bucket list: ", data.Buckets);}
 });
 
 app.listen(port, () => {
